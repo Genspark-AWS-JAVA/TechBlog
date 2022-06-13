@@ -1,1 +1,12 @@
+*{
+    margin: auto;
+    padding-left: 5px;
+}:root{
+    --primary: #5D5C61;
+    --secondary: #938e93;
+    --tertiary: #b1a296;
+    --accent: #7395AE;
+    --darker: #557A95;
 
+
+}
