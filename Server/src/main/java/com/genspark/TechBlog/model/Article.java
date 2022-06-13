@@ -1,24 +1,47 @@
 package com.genspark.TechBlog.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private long id;
     private String title;
     @Lob
     private String content;
-    private Long authorId;
-    private Long tagsId;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private User author;
+
+    @ManyToOne
+    @JoinColumn(name = "tag_id")
+    private Tags tag;
     private String date;
     private String image;
     private String status;
     private String likes;
     private String views;
     private String slug;
+
+    public Tags getTag() {
+        return tag;
+    }
+
+    public void setTag(Tags tag) {
+        this.tag = tag;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
 
     public String getTitle() {
         return title;
@@ -36,21 +59,6 @@ public class Article {
         this.content = content;
     }
 
-    public Long getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(Long authorId) {
-        this.authorId = authorId;
-    }
-
-    public Long getTagsId() {
-        return tagsId;
-    }
-
-    public void setTagsId(Long tagsId) {
-        this.tagsId = tagsId;
-    }
 
     public String getDate() {
         return date;
