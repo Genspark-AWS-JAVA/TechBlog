@@ -3,6 +3,9 @@ package com.genspark.TechBlog;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * a Tech Blog web service application
+ */
 @SpringBootApplication
 public class TechBlogApplication {
 
