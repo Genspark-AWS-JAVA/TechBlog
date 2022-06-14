@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
 
@@ -9,7 +9,7 @@ const Posts = () => {
     axios.get("http://localhost:8080").then((res) => {
       setPosts(res.data);
       console.log(posts);
-    });
+    },);
   },[]);
 
   return (
