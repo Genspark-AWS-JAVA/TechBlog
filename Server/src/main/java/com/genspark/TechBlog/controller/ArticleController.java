@@ -34,7 +34,7 @@ public class ArticleController {
     public Article update(@RequestBody Article article) {
         return articleService.save(article);
     }
-
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/articles")
     public Article add(@RequestBody Article article) {
         return articleService.save(article);
