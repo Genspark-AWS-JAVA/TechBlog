@@ -16,10 +16,7 @@ const CreatePost = () => {
     }
 
     const handleFormSubmit= () => {
-        axios.post('http://localhost:8080/articles',{
-            "title" : title,
-            "content": content
-        })
+        axios.get('http://localhost:8080/articles')
     }
 
   return (
