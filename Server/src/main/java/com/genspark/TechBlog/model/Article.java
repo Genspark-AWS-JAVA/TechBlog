@@ -13,9 +13,25 @@ public class Article {
     @Lob
     private String content;
 
-    @ManyToOne
-    @JoinColumn(name = "author_id")
-    private User author;
+//    @ManyToOne
+//    @JoinColumn(name = "author_id")
+//    private User author;
+
+//    @ManyToMany
+//    @JoinTable(name = "article_tags",
+//            joinColumns = @JoinColumn(name = "article_id"),
+//            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+//    private String author;
+
+    private long author;
+
+    public long getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(long author) {
+        this.author = author;
+    }
 
     @ManyToOne
     @JoinColumn(name = "tag_id")
@@ -35,13 +51,13 @@ public class Article {
         this.tag = tag;
     }
 
-    public User getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(User author) {
-        this.author = author;
-    }
+//    public User getAuthor() {
+//        return author;
+//    }
+//
+//    public void setAuthor(User author) {
+//        this.author = author;
+//    }
 
     public String getTitle() {
         return title;
