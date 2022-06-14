@@ -1,6 +1,7 @@
 package com.genspark.TechBlog.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
@@ -15,6 +16,9 @@ public class User {
     private String lastName;
     private String phone;
     private String role;
+
+    @OneToMany(mappedBy = "id")
+    private List<Article> articles;
 
     public Long getId() {
         return id;
