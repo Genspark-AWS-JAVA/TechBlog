@@ -7,23 +7,23 @@ import java.util.List;
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "article_id", nullable = false)
     private long id;
     private String title;
     @Lob
     private String content;
 
-//    @ManyToOne
-//    @JoinColumn(name = "author_id")
-//    private User author;
-
-//    @ManyToMany
-//    @JoinTable(name = "article_tags",
-//            joinColumns = @JoinColumn(name = "article_id"),
-//            inverseJoinColumns = @JoinColumn(name = "tag_id"))
-//    private String author;
-
     private long author;
+    @OneToMany(mappedBy = "article")
+    private List<Tag> tag;
+    private String date;
+    private String image;
+    private String status;
+    private String likes;
+    private String views;
+    private String slug;
+    @OneToMany(mappedBy = "article")
+    private List<Comment> comments;
 
     public long getAuthor() {
         return author;
@@ -33,31 +33,21 @@ public class Article {
         this.author = author;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "tag_id")
-    private Tags tag;
-    private String date;
-    private String image;
-    private String status;
-    private String likes;
-    private String views;
-    private String slug;
-
-    public Tags getTag() {
+    public List<Tag> getTag() {
         return tag;
     }
 
-    public void setTag(Tags tag) {
+    public void setTag(List<Tag> tag) {
         this.tag = tag;
     }
 
-//    public User getAuthor() {
-//        return author;
-//    }
-//
-//    public void setAuthor(User author) {
-//        this.author = author;
-//    }
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
     public String getTitle() {
         return title;
