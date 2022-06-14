@@ -3,13 +3,16 @@ package com.genspark.TechBlog.model;
 import javax.persistence.*;
 
 @Entity
-public class Tags {
+public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private long id;
     private String tag;
 
+    @ManyToOne
+    @JoinColumn(name = "article_id")
+    private Article article;
 
 
     public String getTag() {

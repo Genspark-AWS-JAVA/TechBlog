@@ -1,7 +1,7 @@
 package com.genspark.TechBlog.controller;
 
-import com.genspark.TechBlog.model.Tags;
-import com.genspark.TechBlog.service.TagsService;
+import com.genspark.TechBlog.model.Tag;
+import com.genspark.TechBlog.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,27 +10,27 @@ import java.util.ArrayList;
 @RestController
 public class TagsController {
     @Autowired
-    private TagsService tagsService;
+    private TagService tagService;
 
     @GetMapping("/tags")
-    public Iterable<Tags> read() {
-        return tagsService.findAll();
+    public Iterable<Tag> read() {
+        return tagService.findAll();
     }
 
     @GetMapping("/tags/{id}")
-    public Iterable<Tags> read(@PathVariable long id) {
+    public Iterable<Tag> read(@PathVariable long id) {
         ArrayList<Long> idList = new ArrayList<>();
         idList.add(id);
-        return tagsService.findAllById(idList);
+        return tagService.findAllById(idList);
     }
 
     @PostMapping("/tags")
-    public Tags add(@RequestBody Tags tags) {
-        return tagsService.save(tags);
+    public Tag add(@RequestBody Tag tag) {
+        return tagService.save(tag);
     }
 
     @DeleteMapping("/tags/{id}")
     public void delete(@PathVariable long id) {
-        tagsService.deleteById(id);
+        tagService.deleteById(id);
     }
 }
