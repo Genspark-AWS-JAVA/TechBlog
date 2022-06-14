@@ -22,8 +22,20 @@ public class Article {
     private String likes;
     private String views;
     private String slug;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private User user;
     @OneToMany(mappedBy = "article")
     private List<Comment> comments;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public long getAuthor() {
         return author;
