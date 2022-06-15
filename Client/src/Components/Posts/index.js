@@ -5,12 +5,10 @@ import axios from "axios";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
-
   useEffect(() => {
     axios.get("http://localhost:8080").then((res) => {
       setPosts(res.data);
-      console.log(posts);
-    },);
+    });
   },[]);
 
   return (

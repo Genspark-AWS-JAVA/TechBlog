@@ -1,23 +1,65 @@
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import React,{useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
+import { Row, Col, Button } from "react-bootstrap";
 
 const SinglePost = () => {
-    const [data, setData] = useState()
-    const article = useParams()
-    console.log(article._id)
-    useEffect(()=>{
-        axios.get(`http://localhost:8080/articles/${article._id}`).then((res)=> {
-            setData(res.data)
-            console.log(data)
-        })
-    },[])
+  const article = useParams();
+  const [post, setPost] = useState([]);
+  const [commentText, setCommentText] = useState("");
 
-    return(
-        <div>
-            <h1>HELLO FROM THE SINGLE POST</h1>
-        </div>
-    )
-}
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await axios.get(
+          `http://localhost:8080/articles/${article._id}`
+        );
 
-export default SinglePost
+        setPost(result.data[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleComment = (e) => {
+    setCommentText(e.target.value);
+  };
+
+  const submitComment = (e) => {
+    e.preventDefault();
+    console.log(commentText);
+    if (commentText !== "") {
+    } else {
+      alert("please type something");
+    }
+  };
+
+  return (
+    <div>
+      <Row>
+        <Col>
+          <h1>{post.title}</h1>
+          <p>{post.content}</p>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col>
+          <h4>Add a comment!</h4>
+        </Col>
+        <Col>
+          <textarea
+            onChange={handleComment}
+          ></textarea>
+        </Col>
+        <Col>
+          <Button onClick={submitComment}>Comment</Button>
+        </Col>
+      </Row>
+    </div>
+  );
+};
+
+export default SinglePost;
