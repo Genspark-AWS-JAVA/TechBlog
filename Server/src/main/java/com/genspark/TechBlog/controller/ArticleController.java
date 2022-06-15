@@ -12,12 +12,14 @@ public class ArticleController {
 
     @Autowired
     ArticleService articleService;
+
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/")
     public Iterable<Article> readHome() {
         return articleService.findAll();
     }
-//    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/articles")
     public Iterable<Article> read() {
         return articleService.findAll();
