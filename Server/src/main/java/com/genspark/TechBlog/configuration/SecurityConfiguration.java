@@ -38,7 +38,8 @@ public class SecurityConfiguration {
 //                                .antMatchers(HttpMethod.POST, "/users").hasAuthority(Authorities.WRITE_USER.toString())
 //                                .antMatchers(HttpMethod.PUT, "/users/**").hasAuthority(Authorities.WRITE_USER.toString())
 //                                .antMatchers(HttpMethod.DELETE, "/users/**").hasAuthority(Authorities.DELETE_USER.toString())
-                ).httpBasic().and()
+                )
+//                .httpBasic().and()
                 .cors().disable()
                 .csrf().disable().build();
 //                .cors(Customizer.withDefaults())
