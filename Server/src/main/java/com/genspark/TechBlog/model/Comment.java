@@ -1,7 +1,6 @@
 package com.genspark.TechBlog.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Comment {
