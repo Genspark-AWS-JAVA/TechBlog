@@ -21,7 +21,7 @@ public class SecurityConfiguration {
         return http.authorizeRequests().antMatchers("/").permitAll()
                 .antMatchers("/articles").permitAll()
                 .antMatchers("/login").permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().authenticated().and().httpBasic()
                 .and().csrf().disable().build();
     }
 
