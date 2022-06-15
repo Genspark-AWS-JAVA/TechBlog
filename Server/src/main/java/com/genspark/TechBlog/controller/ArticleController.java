@@ -24,7 +24,7 @@ public class ArticleController {
     public Iterable<Article> read() {
         return articleService.findAll();
     }
-
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/articles/{id}")
     public Iterable<Article> read(@PathVariable long id) {
         ArrayList<Long> idList = new ArrayList<>();

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
+import {Link} from 'react-router-dom'
 import axios from "axios";
 
 const Posts = () => {
@@ -31,9 +32,9 @@ const Posts = () => {
         {
             posts.map(data =>
                 <div>
-                     <h1>{data.title}</h1>
+                     <h1><Link to={`/articles/${data.id}`}>{data.title}</Link></h1>
                      <p>{data.content}</p>
-                     <Button>Comment</Button>
+                     <p>Comments(<span>{data.comments.length}</span>)</p>
                 </div>
                  
             )
