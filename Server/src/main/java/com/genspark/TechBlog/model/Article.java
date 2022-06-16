@@ -16,7 +16,8 @@ public class Article {
     @Lob
     private String content;
 
-    @OneToMany(mappedBy = "id")
+    @JsonIgnore
+    @OneToMany(mappedBy = "article")
     private List<Tag> tag = new ArrayList<>();
     private String date;
     private String image;
@@ -25,11 +26,14 @@ public class Article {
     private String views;
     private String slug;
 
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USERNAME")
     @JsonIgnore
     private User user;
-    @OneToMany(mappedBy = "id")
+
+    @OneToMany(mappedBy = "article")
+    @JsonIgnore
     private List<Comment> comments = new ArrayList<>();
 
     public User getUser() {

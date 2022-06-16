@@ -1,5 +1,7 @@
 package com.genspark.TechBlog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +14,7 @@ public class Tag {
 
     @ManyToOne
     @JoinColumn(name = "ARTICLE_ID")
+    @JsonIgnore
     private Article article;
 
 

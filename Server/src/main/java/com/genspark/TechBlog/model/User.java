@@ -1,5 +1,7 @@
 package com.genspark.TechBlog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,7 +11,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "USER_ID", nullable = false)
     private Long id;
-    @Column(name = "USER_NAME", nullable = false, unique = true)
+    @Column(name = "USERNAME", nullable = false, unique = true)
     private String username;
     private String password;
     private String email;
@@ -18,8 +20,13 @@ public class User {
     private String phone;
     private String role;
 
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Article> articles;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Comment> comments;
 
     public Long getId() {
         return id;
@@ -91,5 +98,13 @@ public class User {
 
     public void setArticles(List<Article> articles) {
         this.articles = articles;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }
