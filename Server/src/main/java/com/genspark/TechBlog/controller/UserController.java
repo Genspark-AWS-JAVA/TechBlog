@@ -24,6 +24,11 @@ public class UserController {
         return userService.findAllById(idList);
     }
 
+//    @GetMapping("/users/{id}/articles")
+//    public Iterable<User> readByArticle(@PathVariable(value = "id") long id) {
+//        return userService.findAllByAuthorId(id);
+//    }
+
     @PostMapping("/users")
     public User add(@RequestBody User user) {
         return userService.save(user);

@@ -1,19 +1,28 @@
 package com.genspark.TechBlog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 
 @Entity
 public class Comment {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
     private String title;
+    @Lob
     private String content;
+    // todo: get date to be generated
     private String date;
     private String author;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "article_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private Article article;
 
     public Article getArticle() {
@@ -58,5 +67,9 @@ public class Comment {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
