@@ -17,31 +17,37 @@ public class UserController {
         return userService.findAll();
     }
 
-    @GetMapping("/users/{id}")
-    public Iterable<User> read(@PathVariable long id) {
-        ArrayList<Long> idList = new ArrayList<>();
-        idList.add(id);
-        return userService.findAllById(idList);
+    @GetMapping("/users/{username}")
+    public Iterable<User> read(@PathVariable String username) {
+        return userService.findAllByUsername(username);
     }
 
-//    @GetMapping("/users/{id}/articles")
-//    public Iterable<User> readByArticle(@PathVariable(value = "id") long id) {
-//        return userService.findAllByAuthorId(id);
-//    }
+    @GetMapping("/users/{username}/articles")
+    public Iterable<User> readByArticle(@PathVariable(value = "username") String username) {
+        return userService.findAllByUsername(username);
+    }
 
     @PostMapping("/users")
     public User add(@RequestBody User user) {
         return userService.save(user);
     }
 
-    @PutMapping("/users")
-    public User update(@RequestBody User user) {
-        return userService.save(user);
+    @PutMapping("/users/{username}")
+    public User update(@PathVariable String username, @RequestBody User user) {
+        Iterable<User> users = userService.findAllByUsername(username);
+        if (users.iterator().hasNext()) {
+            User userToUpdate = users.iterator().next();
+            user.setId(userToUpdate.getId());
+            user.setUsername(userToUpdate.getUsername());
+            userService.save(user);
+            return userToUpdate;
+        }
+        return null;
     }
 
-    @DeleteMapping("/users/{id}")
-    public void delete(@PathVariable long id) {
-        userService.deleteById(id);
+    @DeleteMapping("/users/{username}")
+    public void delete(@PathVariable String username) {
+        userService.deleteByUsername(username);
     }
 
 }

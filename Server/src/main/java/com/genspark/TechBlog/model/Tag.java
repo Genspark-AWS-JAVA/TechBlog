@@ -6,12 +6,12 @@ import javax.persistence.*;
 public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "TAG_ID", nullable = false)
     private long id;
     private String tag;
 
     @ManyToOne
-    @JoinColumn(name = "article_id")
+    @JoinColumn(name = "ARTICLE_ID")
     private Article article;
 
 
