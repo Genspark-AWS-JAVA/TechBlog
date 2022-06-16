@@ -1,6 +1,7 @@
 *{
     margin: auto;
     padding-left: 5px;
+    background-color: var(--accent);
 }
 :root{
     --primary: #5D5C61;
@@ -10,4 +11,9 @@
     --darker: #557A95;
 
 
+}
+
+.headerArea{
+    background-color: var(--primary);
+    color: var(--accent);
 }

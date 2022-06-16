@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav"
 const Navbar = () => {
     return(
         <div>
-            <Nav>
+            <Nav className="headerArea">
                 <Nav.Item>
                     <Nav.Link href="/">Posts</Nav.Link>
                 </Nav.Item>
