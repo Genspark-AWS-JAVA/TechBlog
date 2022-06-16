@@ -17,7 +17,11 @@ public class Comment {
     private String content;
     // todo: get date to be generated
     private String date;
-    private String author;
+
+    @ManyToOne
+    @JoinColumn(name = "USERNAME")
+    @JsonIgnore
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ARTICLE_ID")
@@ -57,19 +61,19 @@ public class Comment {
         this.date = date;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
