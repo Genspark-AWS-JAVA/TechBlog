@@ -7,8 +7,9 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "USER_ID", nullable = false)
     private Long id;
+    @Column(name = "USER_NAME", nullable = false, unique = true)
     private String username;
     private String password;
     private String email;
