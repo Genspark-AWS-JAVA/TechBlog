@@ -1,0 +1,116 @@
+{
+    "users": [
+        {
+            "firstName": "Leanne",
+            "lastName": "Graham",
+            "username": "lgraham",
+            "email": "one@domain.com"
+        },
+        {
+            "firstName": "Ervin",
+            "lastName": "Howell",
+            "username": "erwin",
+            "email": "two@domain.com"
+        },
+        {
+            "firstName": "Clementine",
+            "lastName": "Bauch",
+            "username": "clbauch",
+            "email": "three@domain.com"
+        },
+        {
+            "firstName": "Patricia",
+            "lastName": "Lebsack",
+            "username": "lebsack",
+            "email": "four@domain.com"
+        }
+    ],
+    "articles": [
+        {
+            "title": "AWS Lambda",
+            "content": "AWS Lambda is a compute service that lets you run code without provisioning or managing servers. Lambda handles all the administration of the underlying infrastructure, including server and operating system maintenance, capacity provisioning, and automatic scaling. All you need to do is supply your code in one of the languages that Lambda supports. Lambda runs your code on a high-availability compute infrastructure and performs all of the administration of the compute resources, including server and operating system maintenance, automatic scaling and code monitoring, capacity provisioning, and code logging. Lambda is a perfect fit for many applications, including back-end web services, mobile back ends, and processing data streams. Lambda can also be used for IoT applications, gaming applications, and data-processing applications.",
+            "username": "lgraham"
+        },
+        {
+            "title": "Amazon AWS",
+            "content": "AWS is a secure cloud services platform, offering compute power, database storage, content delivery and other functionality to help businesses scale and grow. One of the key benefits of AWS is its security. AWS provides a number of features to help keep your data safe, including data encryption, identity and access management, and robust networking and security controls.",
+            "username": "erwin"
+        },
+        {
+            "title": "Java",
+            "content": "Java is a versatile language that can be used for a wide variety of purposes. It is a powerful language that can be used to create sophisticated applications. Java is also a platform-independent language, which means that it can be used on any operating system.",
+            "username": "clbauch"
+        },
+        {
+            "title": "Python",
+            "content": "Python is a high-level, interpreted, object-oriented programming language. Python is designed to be highly readable. It uses English-like syntax and has many built-in functions that are easy to use. Python is also a dynamic language, which means that it is capable of executing code at run-time. Python is also a high-level language, which means that it can be used to create high-level applications.",
+            "username": "lebsack"
+        },
+        {
+            "title": "C++",
+            "content": "C++ is a high-level, statically typed, object-oriented programming language. C++ is designed to be highly readable. It uses English-like syntax and has many built-in functions that are easy to use. C++ is also a dynamic language, which means that it is capable of executing code at run-time. C++ is also a high-level language, which means that it can be used to create high-level applications.",
+            "username": "lebsack"
+        },
+        {
+            "title": "C#",
+            "content": "C# is a high-level, statically typed, object-oriented programming language. C# is designed to be highly readable. It uses English-like syntax and has many built-in functions that are easy to use. C# is also a dynamic language, which means that it is capable of executing code at run-time. C# is also a high-level language, which means that it can be used to create high-level applications.",
+            "username": "lebsack"
+        },
+        {
+            "title": "JavaScript",
+            "content": "JavaScript is a high-level, dynamic, untyped, and interpreted programming language. JavaScript is designed to be highly readable. It uses English-like syntax and has many built-in functions that are easy to use. JavaScript is also a dynamic language, which means that it is capable of executing code at run-time. JavaScript is also a high-level language, which means that it can be used to create high-level applications.",
+            "username": "lgraham"
+        },
+        {
+            "title": "PHP",
+            "content": "PHP is a high-level, dynamically typed, object-oriented programming language. PHP is designed to be highly readable. It uses English-like syntax and has many built-in functions that are easy to use. PHP is also a dynamic language, which means that it is capable of executing code at run-time. PHP is also a high-level language, which means that it can be used to create high-level applications.",
+            "username": "erwin"
+        },
+        {
+            "title": "Ruby",
+            "content": "Ruby is a high-level, statically typed, object-oriented programming language. Ruby is designed to be highly readable. It uses English-like syntax and has many built-in functions that are easy to use. Ruby is also a dynamic language, which means that it is capable of executing code at run-time. Ruby is also a high-level language, which means that it can be used to create high-level applications."
+        },
+        {
+            "title": "Swift",
+            "content": "Swift is a high-level, statically typed, object-oriented programming language. Swift is designed to be highly readable. It uses English-like syntax and has many built-in functions that are easy to use. Swift is also a dynamic language, which means that it is capable of executing code at run-time. Swift is also a high-level language, which means that it can be used to create high-level applications."
+        },
+        {
+            "title": "Kotlin",
+            "content": "Kotlin is a high-level, statically typed, object-oriented programming language. Kotlin is designed to be highly readable. It uses English-like syntax and has many built-in functions that are easy to use. Kotlin is also a dynamic language, which means that it is capable of executing code at run-time. Kotlin is also a high-level language, which means that it can be used to create high-level applications."
+        },
+        {
+            "title": "C",
+            "content": "C is a high-level, statically typed, object-oriented programming language. C is designed to be highly readable. It uses English-like syntax and has many built-in functions that are easy to use. C is also a dynamic language, which means that it is capable of executing code at run-time. C is also a high-level language, which means that it can be used to create high-level applications."
+        },
+        {
+            "title": "C#",
+            "content": "C# is a high-level, statically typed, object-oriented programming language. C# is designed to be highly readable. It uses English-like syntax and has many built-in functions that are easy to use. C# is also a dynamic language, which means that it is capable of executing code at run-time. C# is also a high-level language, which means that it can be used to create high-level applications."
+        },
+        {
+            "title": "C++",
+            "content": "C++ is a high-level, statically typed, object-oriented programming language. C++ is designed to be highly readable. It uses English-like syntax and has many built-in functions that are easy to use. C++ is also a dynamic language, which means that it is capable of executing code at run-time. C++ is also a high-level language, which means that it can be used to create high-level applications."
+        },
+        {
+            "title": "Java",
+            "content": "Java is a high-level, statically typed, object-oriented programming language. Java is designed to be highly readable. It uses English-like syntax and has many built-in functions that are easy to use. Java is also a dynamic language, which means that it is capable of executing code at run-time. Java is also a high-level language, which means that it can be used to create high-level applications."
+        }
+    ],
+    "comments": [
+        {
+            "title": "John Doe",
+            "content": "This is a comment"
+        },
+        {
+            "title": "comment",
+            "content": "good point"
+        },
+        {
+            "title": "my comment",
+            "content": "I like this article"
+        },
+        {
+            "title": "maybe",
+            "content": "Nice article"
+        }
+    ]
+}

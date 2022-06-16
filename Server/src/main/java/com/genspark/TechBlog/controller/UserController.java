@@ -12,26 +12,31 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/users")
     public Iterable<User> read() {
         return userService.findAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/users/{username}")
     public Iterable<User> read(@PathVariable String username) {
         return userService.findAllByUsername(username);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/users/{username}/articles")
     public Iterable<Article> readByArticle(@PathVariable(value = "username") String username) {
         return userService.findAllByUsername(username).iterator().next().getArticles();
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/users")
     public User add(@RequestBody User user) {
         return userService.save(user);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/users/{username}")
     public User update(@PathVariable String username, @RequestBody User user) {
         Iterable<User> users = userService.findAllByUsername(username);
@@ -45,6 +50,7 @@ public class UserController {
         return null;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping("/users/{username}")
     public void delete(@PathVariable String username) {
         userService.deleteByUsername(username);
