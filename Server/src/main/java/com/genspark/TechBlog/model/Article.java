@@ -33,7 +33,6 @@ public class Article {
     private User user;
 
     @OneToMany(mappedBy = "article")
-    @JsonIgnore
     private List<Comment> comments = new ArrayList<>();
 
     public User getUser() {
