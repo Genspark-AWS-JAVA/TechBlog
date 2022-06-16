@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "COMMENT_ID", nullable = false)
     private Long id;
     private String title;
     @Lob
@@ -20,7 +20,7 @@ public class Comment {
     private String author;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "article_id")
+    @JoinColumn(name = "ARTICLE_ID")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Article article;
