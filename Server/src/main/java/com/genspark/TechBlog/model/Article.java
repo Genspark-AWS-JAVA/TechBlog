@@ -1,21 +1,24 @@
 package com.genspark.TechBlog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "article_id", nullable = false)
+    @Column(name = "ARTICLE_ID", nullable = false)
     private long id;
     private String title;
     @Lob
     private String content;
 
-    private long author;
+    @JsonIgnore
     @OneToMany(mappedBy = "article")
-    private List<Tag> tag;
+    private List<Tag> tag = new ArrayList<>();
     private String date;
     private String image;
     private String status;
@@ -23,11 +26,14 @@ public class Article {
     private String views;
     private String slug;
 
-    @ManyToOne
-    @JoinColumn(name = "author_id")
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USERNAME")
+    @JsonIgnore
     private User user;
+
     @OneToMany(mappedBy = "article")
-    private List<Comment> comments;
+    private List<Comment> comments = new ArrayList<>();
 
     public User getUser() {
         return user;
@@ -35,14 +41,6 @@ public class Article {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public long getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(long author) {
-        this.author = author;
     }
 
     public List<Tag> getTag() {
@@ -126,8 +124,11 @@ public class Article {
         this.slug = slug;
     }
 
-
     public Long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

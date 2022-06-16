@@ -12,18 +12,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SpringBootApplication
 public class TechBlogApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(TechBlogApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(TechBlogApplication.class, args);
+    }
 
-	// enble CORS for all origins
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/articles").allowedOrigins("http://localhost:8080");
-			}
-		};
-	}
+    // enble CORS for all origins
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/articles").allowedOrigins("http://localhost:8080");
+            }
+        };
+    }
 }
