@@ -1,5 +1,7 @@
 package com.genspark.TechBlog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -25,6 +27,7 @@ public class Article {
 
     @ManyToOne
     @JoinColumn(name = "author_id")
+    @JsonIgnore
     private User user;
     @OneToMany(mappedBy = "article")
     private List<Comment> comments;
@@ -126,8 +129,11 @@ public class Article {
         this.slug = slug;
     }
 
-
     public Long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

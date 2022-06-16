@@ -30,4 +30,12 @@ public class Tag {
     public void setId(long id) {
         this.id = id;
     }
+
+    public Article getArticle() {
+        return article;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
+    }
 }

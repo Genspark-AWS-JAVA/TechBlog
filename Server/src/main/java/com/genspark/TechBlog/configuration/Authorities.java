@@ -8,6 +8,7 @@ public enum Authorities {
     DELETE_USER("DELETE_USER");
 
     private final String authority;
+
     Authorities(final String text) {
         this.authority = text;
     }

@@ -1,6 +1,7 @@
 package com.genspark.TechBlog.controller;
 
 import com.genspark.TechBlog.model.Comment;
+import com.genspark.TechBlog.service.ArticleService;
 import com.genspark.TechBlog.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,8 @@ import java.util.ArrayList;
 public class CommentController {
     @Autowired
     private CommentService commentService;
+    @Autowired
+    private ArticleService articleService;
 
     @GetMapping("/comments")
     public Iterable<Comment> read() {
@@ -24,19 +27,30 @@ public class CommentController {
         return commentService.findAllById(idList);
     }
 
-//    @GetMapping("/comments/article/{id}")
-//    public Iterable<Comment> readByArticle(@PathVariable long id) {
-//        return commentService.findAllByArticleId(id);
-//    }
+    @GetMapping("/articles/{article_id}/comments")
+    public Iterable<Comment> readByArticle(@PathVariable(value = "article_id") long id) {
+        return commentService.findAllByArticleId(id);
+    }
 
-    @PostMapping("/comments")
-    public Comment add(@RequestBody Comment comment) {
+    @PostMapping("/articles/{article_id}/comments")
+    public Comment add(@PathVariable(value = "article_id") long id, @RequestBody Comment comment) {
+        comment.setArticle(articleService.findById(id).get());
         return commentService.save(comment);
     }
 
-    @PutMapping("/comments")
-    public Comment update(@RequestBody Comment comment) {
+    @PutMapping("/articles/{article_id}/comments")
+    public Comment update(@PathVariable(value = "article_id") long id, @RequestBody Comment comment) {
         return commentService.save(comment);
+    }
+
+    @DeleteMapping("/comments/{id}")
+    public void delete(@PathVariable(value = "id") long id) {
+        commentService.deleteById(id);
+    }
+
+    @DeleteMapping("/article/{article_id}/comments")
+    public void deleteByArticle(@PathVariable(value = "article_id") long id) {
+        commentService.deleteByArticleId(id);
     }
 
 }
