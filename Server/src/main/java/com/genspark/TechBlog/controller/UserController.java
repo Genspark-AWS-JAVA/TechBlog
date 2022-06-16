@@ -1,11 +1,11 @@
 package com.genspark.TechBlog.controller;
 
+import com.genspark.TechBlog.model.Article;
 import com.genspark.TechBlog.model.User;
 import com.genspark.TechBlog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 
 @RestController
 public class UserController {
@@ -23,8 +23,8 @@ public class UserController {
     }
 
     @GetMapping("/users/{username}/articles")
-    public Iterable<User> readByArticle(@PathVariable(value = "username") String username) {
-        return userService.findAllByUsername(username);
+    public Iterable<Article> readByArticle(@PathVariable(value = "username") String username) {
+        return userService.findAllByUsername(username).iterator().next().getArticles();
     }
 
     @PostMapping("/users")
