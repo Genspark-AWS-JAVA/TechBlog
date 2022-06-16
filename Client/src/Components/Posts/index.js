@@ -11,14 +11,6 @@ const Posts = () => {
     });
   },[]);
 
-  const commentCount = () => {
-    if(posts.comments.length < 0){
-      return <span>0</span>;
-    } else{
-      return <span>posts.comments.length</span>
-    }
-  }
-
   return (
     <div>
       <Form>
@@ -37,10 +29,10 @@ const Posts = () => {
       <div>
         {
             posts.map(data =>
-                <div>
-                     <h1><Link to={`/articles/${data.id}`}>{data.title}</Link></h1>
+                <div className="comments">
+                     <h1><Link className="titles" to={`/articles/${data.id}`}>{data.title}</Link></h1>
                      <p>{data.content}</p>
-                     <p>Comments({commentCount})</p>
+                     <p>Comments(<span>{data.comments.length}</span>)</p>
                 </div>
                  
             )

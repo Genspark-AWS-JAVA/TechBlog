@@ -3,16 +3,16 @@ import Nav from "react-bootstrap/Nav"
 
 const Navbar = () => {
     return(
-        <div>
+        <div className="headerArea">
             <Nav className="headerArea">
-                <Nav.Item>
-                    <Nav.Link href="/">Posts</Nav.Link>
+                <Nav.Item className="headerArea">
+                    <Nav.Link href="/" className="headerArea">Posts</Nav.Link>
                 </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link href="/login">Login</Nav.Link>
+                <Nav.Item className="headerArea">
+                    <Nav.Link href="/login" className="headerArea">Login</Nav.Link>
                 </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link>Account</Nav.Link>
+                <Nav.Item className="headerArea">
+                    <Nav.Link className="headerArea">Account</Nav.Link>
                 </Nav.Item>
             </Nav>
         </div>

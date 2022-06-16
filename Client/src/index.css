@@ -1,6 +1,5 @@
 *{
     margin: auto;
-    padding-left: 5px;
     background-color: var(--accent);
 }
 :root{
@@ -13,7 +12,19 @@
 
 }
 
+.titles{
+    text-decoration: none;
+    color: white;
+}
+
+
 .headerArea{
     background-color: var(--primary);
     color: var(--accent);
+}
+
+.comments{
+    padding-top: 5px;
+    color: white;
+    text-decoration: none;
 }

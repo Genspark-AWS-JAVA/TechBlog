@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Button, Form } from "react-bootstrap";
 
 const SinglePost = () => {
   const article = useParams();
@@ -48,17 +48,17 @@ const SinglePost = () => {
     <div>
       <Row>
         <Col>
-          <h1>{post.title}</h1>
-          <p>{post.content}</p>
+          <h1 className="titles">{post.title}</h1>
+          <p className="comments">{post.content}</p>
         </Col>
       </Row>
 
       <Row>
         <Col>
-          <h4>Add a comment!</h4>
+          <h4 className="titles">Add a comment!</h4>
         </Col>
         <Col>
-          <textarea onChange={handleComment}></textarea>
+          <Form.Control onSubmit={submitComment} onChange={handleComment}></Form.Control>
         </Col>
         <Col>
           <Button onClick={submitComment}>Comment</Button>
@@ -67,7 +67,7 @@ const SinglePost = () => {
       <div>
         {comments.map((data) => (
           <div>
-            <h1>{data.content}</h1>
+            <h1 className="comments">{data.content}</h1>
           </div>
         ))}
       </div>
