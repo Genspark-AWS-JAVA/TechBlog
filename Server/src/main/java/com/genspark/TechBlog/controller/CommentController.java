@@ -31,7 +31,7 @@ public class CommentController {
     public Iterable<Comment> readByArticle(@PathVariable(value = "article_id") long id) {
         return commentService.findAllByArticleId(id);
     }
-
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/articles/{article_id}/comments")
     public Comment add(@PathVariable(value = "article_id") long id, @RequestBody Comment comment) {
         comment.setArticle(articleService.findById(id).get());

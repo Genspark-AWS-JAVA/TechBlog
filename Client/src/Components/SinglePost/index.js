@@ -6,6 +6,7 @@ import { Row, Col, Button } from "react-bootstrap";
 const SinglePost = () => {
   const article = useParams();
   const [post, setPost] = useState([]);
+  const [comments, setComments] = useState([]);
   const [commentText, setCommentText] = useState("");
 
   useEffect(() => {
@@ -16,6 +17,7 @@ const SinglePost = () => {
         );
 
         setPost(result.data[0]);
+        setComments(result.data[0].comments);
       } catch (error) {
         console.log(error);
       }
@@ -30,7 +32,13 @@ const SinglePost = () => {
   const submitComment = (e) => {
     e.preventDefault();
     console.log(commentText);
+    debugger
     if (commentText !== "") {
+      axios
+        .post(`http://localhost:8080/articles/${article._id}/comments`, {
+          content: commentText,
+        })
+        .then(window.location.reload());
     } else {
       alert("please type something");
     }
@@ -50,14 +58,19 @@ const SinglePost = () => {
           <h4>Add a comment!</h4>
         </Col>
         <Col>
-          <textarea
-            onChange={handleComment}
-          ></textarea>
+          <textarea onChange={handleComment}></textarea>
         </Col>
         <Col>
           <Button onClick={submitComment}>Comment</Button>
         </Col>
       </Row>
+      <div>
+        {comments.map((data) => (
+          <div>
+            <h1>{data.content}</h1>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
