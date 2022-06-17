@@ -51,10 +51,10 @@ const SinglePost = () => {
   // const handleComId = (e) => {
   //   setComId(e)
   // }
-  // const handleCommentDel = (e) => {
-  //   // e.preventDefault();
-  //   axios.delete(`http://localhost:8080/comments/${comId}`);
-  // };
+  const handleCommentDel = (e) => {
+    // e.preventDefault();
+    axios.delete(`http://localhost:8080/comments/${comId}`);
+  };
 
   return (
     <div>
@@ -84,9 +84,9 @@ const SinglePost = () => {
           <div>
             {/* {setComId(data.id)} */}
             <h1 className="comments">{data.content}</h1>
-            {/* <Button onClick={handleCommentDel} variant="danger">
+            <Button onClick={handleCommentDel} variant="danger">
               Delete Comment
-            </Button> */}
+            </Button>
           </div>
         ))}
       </div>
