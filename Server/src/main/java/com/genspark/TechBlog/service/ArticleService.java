@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ArticleService extends JpaRepository<Article, Long> {
 
+    Iterable<Article> findAllByUsername(String username);
 }

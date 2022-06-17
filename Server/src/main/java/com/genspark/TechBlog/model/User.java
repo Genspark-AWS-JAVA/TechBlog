@@ -1,17 +1,16 @@
 package com.genspark.TechBlog.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "USER_ID", nullable = false)
+    @Column(nullable = false)
     private Long id;
-    @Column(name = "USERNAME", nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private String username;
     private String password;
     private String email;
@@ -21,12 +20,22 @@ public class User {
     private String role;
 
     @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    private List<Article> articles;
+    private List<Comment> comments = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    private List<Comment> comments;
+    @OneToMany(mappedBy = "username")
+    private List<Article> articles = new ArrayList<>();
+
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
+    }
+
+//    @OneToMany(mappedBy = "user", orphanRemoval = true)
+//    private List<Article> articles = new ArrayList<>();
+
 
     public Long getId() {
         return id;
@@ -92,14 +101,6 @@ public class User {
         this.role = role;
     }
 
-    public List<Article> getArticles() {
-        return articles;
-    }
-
-    public void setArticles(List<Article> articles) {
-        this.articles = articles;
-    }
-
     public List<Comment> getComments() {
         return comments;
     }
@@ -107,4 +108,6 @@ public class User {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
+
+
 }

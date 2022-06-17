@@ -1,47 +1,64 @@
 package com.genspark.TechBlog.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ARTICLE_ID", nullable = false)
+    @Column(nullable = false)
     private long id;
     private String title;
     @Lob
     private String content;
 
-    @JsonIgnore
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "create_date")
+    private Date createDate;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "modify_date")
+    private Date modifyDate;
     @OneToMany(mappedBy = "article")
     private List<Tag> tag = new ArrayList<>();
-    private String date;
+
     private String image;
     private String status;
     private String likes;
     private String views;
     private String slug;
+    private String username;
 
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USERNAME")
-    @JsonIgnore
-    private User user;
 
     @OneToMany(mappedBy = "article")
     private List<Comment> comments = new ArrayList<>();
 
-    public User getUser() {
-        return user;
-    }
+    @ManyToOne
+    @JoinColumn(name = "USER_ID")
+    private User user;
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    @ManyToOne
+//    @JoinColumn(name = "username")
+//    private User user;
+
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
     public List<Tag> getTag() {
         return tag;
@@ -75,14 +92,6 @@ public class Article {
         this.content = content;
     }
 
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 
     public String getImage() {
         return image;
@@ -130,5 +139,37 @@ public class Article {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getModifyDate() {
+        return modifyDate;
+    }
+
+    public void setModifyDate(Date modifyDate) {
+        this.modifyDate = modifyDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
