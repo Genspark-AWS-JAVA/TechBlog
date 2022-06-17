@@ -8,7 +8,7 @@ const SinglePost = () => {
   const [post, setPost] = useState([]);
   const [comments, setComments] = useState([]);
   const [commentText, setCommentText] = useState("");
-
+  const [comId, setComId] = useState("");
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -26,13 +26,13 @@ const SinglePost = () => {
   }, []);
 
   const handleComment = (e) => {
+    e.preventDefault();
     setCommentText(e.target.value);
   };
 
   const submitComment = (e) => {
     e.preventDefault();
     console.log(commentText);
-    debugger
     if (commentText !== "") {
       axios
         .post(`http://localhost:8080/articles/${article._id}/comments`, {
@@ -50,6 +50,18 @@ const SinglePost = () => {
     }
   };
 
+  const handleDelete = (e) => {
+    e.preventDefault();
+    axios.delete(`http://localhost:8080/articles/${article._id}`);
+  };
+  // const handleComId = (e) => {
+  //   setComId(e)
+  // }
+  const handleCommentDel = (e) => {
+    // e.preventDefault();
+    axios.delete(`http://localhost:8080/comments/${comId}`);
+  };
+
   return (
     <div>
       <Row>
@@ -64,7 +76,10 @@ const SinglePost = () => {
           <h4 className="titles">Add a comment!</h4>
         </Col>
         <Col>
-          <Form.Control onSubmit={submitComment} onChange={handleComment}></Form.Control>
+          <Form.Control
+            onSubmit={submitComment}
+            onChange={handleComment}
+          ></Form.Control>
         </Col>
         <Col>
           <Button onClick={submitComment}>Comment</Button>
@@ -73,9 +88,18 @@ const SinglePost = () => {
       <div>
         {comments.map((data) => (
           <div>
+            {/* {setComId(data.id)} */}
             <h1 className="comments">{data.content}</h1>
+            <Button onClick={handleCommentDel} variant="danger">
+              Delete Comment
+            </Button>
           </div>
         ))}
+      </div>
+      <div>
+        <Button onClick={handleDelete} variant="danger">
+          Delete post
+        </Button>
       </div>
     </div>
   );
