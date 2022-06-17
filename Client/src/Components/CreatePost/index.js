@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 
 const CreatePost = () => {
@@ -22,7 +23,7 @@ const CreatePost = () => {
       axios.post("http://localhost:8080/articles", {
         title: title,
         content: content,
-      });
+      })
     }
   };
 
