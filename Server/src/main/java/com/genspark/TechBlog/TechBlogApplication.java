@@ -16,7 +16,7 @@ public class TechBlogApplication {
         SpringApplication.run(TechBlogApplication.class, args);
     }
 
-    // enble CORS for all origins
+    // enable CORS for all origins
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
