@@ -16,14 +16,4 @@ public class TechBlogApplication {
         SpringApplication.run(TechBlogApplication.class, args);
     }
 
-    // enble CORS for all origins
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/articles").allowedOrigins("http://localhost:8080");
-            }
-        };
-    }
 }
