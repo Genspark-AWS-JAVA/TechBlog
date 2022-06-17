@@ -1,7 +1,6 @@
 package com.genspark.TechBlog.configuration;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.ldap.core.support.BaseLdapPathContextSource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.ldap.EmbeddedLdapServerContextSourceFactoryBean;
@@ -10,7 +9,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.ldap.userdetails.PersonContextMapper;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
@@ -101,13 +99,13 @@ public class OLDSecurityConfiguration {
         return contextSourceFactoryBean;
     }
 
-    @Bean
-    AuthenticationManager ldapAuthenticationManager(BaseLdapPathContextSource contextSource) {
-        LdapBindAuthenticationManagerFactory factory = new LdapBindAuthenticationManagerFactory(contextSource);
-        factory.setUserDnPatterns("uid={0},ou=people");
-        factory.setUserDetailsContextMapper(new PersonContextMapper());
-        return factory.createAuthenticationManager();
-    }
+//    @Bean
+//    AuthenticationManager ldapAuthenticationManager(BaseLdapPathContextSource contextSource) {
+//        LdapBindAuthenticationManagerFactory factory = new LdapBindAuthenticationManagerFactory(contextSource);
+//        factory.setUserDnPatterns("uid={0},ou=people");
+//        factory.setUserDetailsContextMapper(new PersonContextMapper());
+//        return factory.createAuthenticationManager();
+//    }
 
 //    public void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth

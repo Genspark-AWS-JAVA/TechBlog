@@ -2,6 +2,7 @@ package com.genspark.TechBlog.controller;
 
 import com.genspark.TechBlog.model.Article;
 import com.genspark.TechBlog.service.ArticleService;
+import com.genspark.TechBlog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,9 @@ public class ArticleController {
 
     @Autowired
     ArticleService articleService;
+
+    @Autowired
+    UserService userService;
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/")
@@ -34,13 +38,20 @@ public class ArticleController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @PutMapping("/articles")
-    public Article update(@RequestBody Article article) {
-        return articleService.save(article);
+    @GetMapping("/users/{username}/articles")
+    public Iterable<Article> read(@PathVariable String username) {
+        return articleService.findAllByUsername(username);
     }
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/articles")
     public Article add(@RequestBody Article article) {
+        return articleService.save(article);
+    }
+
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PutMapping("/articles")
+    public Article update(@RequestBody Article article) {
         return articleService.save(article);
     }
 

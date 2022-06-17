@@ -23,7 +23,15 @@ const CreatePost = () => {
       axios.post("http://localhost:8080/articles", {
         title: title,
         content: content,
+
       })
+      }, {
+        auth: {
+          username: localStorage.getItem("username"),
+          password: localStorage.getItem("password")
+        }
+      })
+        .then(window.location.reload());
     }
   };
 

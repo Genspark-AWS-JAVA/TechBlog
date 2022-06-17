@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "TAG_ID", nullable = false)
+    @Column(nullable = false)
     private long id;
     private String tag;
 
