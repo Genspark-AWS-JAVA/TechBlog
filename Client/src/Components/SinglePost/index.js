@@ -37,7 +37,13 @@ const SinglePost = () => {
       axios
         .post(`http://localhost:8080/articles/${article._id}/comments`, {
           content: commentText,
-        })
+        }, {
+          auth: {
+            username: localStorage.getItem("username"),
+            password: localStorage.getItem("password")
+          }
+        }
+        )
         .then(window.location.reload());
     } else {
       alert("please type something");
