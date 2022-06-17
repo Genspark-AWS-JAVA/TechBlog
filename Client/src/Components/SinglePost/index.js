@@ -32,7 +32,6 @@ const SinglePost = () => {
   const submitComment = (e) => {
     e.preventDefault();
     console.log(commentText);
-    debugger
     if (commentText !== "") {
       axios
         .post(`http://localhost:8080/articles/${article._id}/comments`, {
