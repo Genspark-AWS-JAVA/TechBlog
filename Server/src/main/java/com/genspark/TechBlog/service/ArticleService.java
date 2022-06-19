@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface ArticleService extends JpaRepository<Article, Long> {
 
     Iterable<Article> findAllByUsername(String username);
+
+    Iterable<Article> findByContentOrTitleContains(String keyword1, String keyword2);
 }
