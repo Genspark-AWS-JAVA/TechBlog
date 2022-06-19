@@ -3,6 +3,7 @@ package com.genspark.TechBlog.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "tags")
 public class Tag {
@@ -12,10 +13,11 @@ public class Tag {
     private long id;
     private String tag;
 
-    @ManyToOne
-    @JoinColumn(name = "ARTICLE_ID")
-    @JsonIgnore
-    private Article article;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "article_tag",
+            joinColumns = @JoinColumn(name = "article_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private List<Article> articles;
 
 
     public String getTag() {
@@ -34,11 +36,11 @@ public class Tag {
         this.id = id;
     }
 
-    public Article getArticle() {
-        return article;
+    public List<Article> getArticles() {
+        return articles;
     }
 
-    public void setArticle(Article article) {
-        this.article = article;
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 }
