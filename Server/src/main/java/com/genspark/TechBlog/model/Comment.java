@@ -9,7 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
+@Entity(name = "comments")
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

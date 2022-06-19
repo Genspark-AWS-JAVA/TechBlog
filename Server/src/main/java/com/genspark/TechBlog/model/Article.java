@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Entity
+@Entity(name = "articles")
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,21 +44,6 @@ public class Article {
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     private User user;
-
-//    @ManyToOne
-//    @JoinColumn(name = "username")
-//    private User user;
-
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
 
     public List<Tag> getTag() {
         return tag;
