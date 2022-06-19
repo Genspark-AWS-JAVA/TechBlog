@@ -40,7 +40,7 @@ public class ArticleController {
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/users/{username}/articles")
     public Iterable<Article> read(@PathVariable String username) {
-            return articleService.findAllByUsername(username);
+        return articleService.findAllByUsername(username);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
