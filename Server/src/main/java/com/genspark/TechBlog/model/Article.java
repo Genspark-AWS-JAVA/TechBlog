@@ -27,8 +27,13 @@ public class Article {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modify_date")
     private Date modifyDate;
-    @OneToMany(mappedBy = "article")
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "article_tag",
+            joinColumns = @JoinColumn(name = "article_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private List<Tag> tag = new ArrayList<>();
+
 
     private String image;
     private String status;
