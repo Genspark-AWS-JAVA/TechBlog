@@ -1,7 +1,5 @@
 package com.genspark.TechBlog.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,7 +9,10 @@ public class Tag {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
     private long id;
-    private String tag;
+
+
+    @Column(name = "value", nullable = false, unique = true)
+    private String value;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "article_tag",
@@ -19,13 +20,12 @@ public class Tag {
             inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private List<Article> articles;
 
-
-    public String getTag() {
-        return tag;
+    public String getValue() {
+        return value;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setValue(String value) {
+        this.value = value;
     }
 
     public long getId() {
@@ -42,5 +42,9 @@ public class Tag {
 
     public void setArticles(List<Article> articles) {
         this.articles = articles;
+    }
+
+    public void addArticle(Article article) {
+        this.articles.add(article);
     }
 }
