@@ -13,6 +13,5 @@ public interface ArticleService extends JpaRepository<Article, Long> {
 
     Article findFirstById(long article_id);
 
-    Iterable<Article> findAllByTags_Value(String value);
-
+    Article findFirstAllById(long id);
 }

@@ -31,10 +31,8 @@ public class ArticleController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/articles/{id}")
-    public Iterable<Article> read(@PathVariable long id) {
-        ArrayList<Long> idList = new ArrayList<>();
-        idList.add(id);
-        return articleService.findAllById(idList);
+    public Article read(@PathVariable long id) {
+        return articleService.findFirstAllById(id);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")

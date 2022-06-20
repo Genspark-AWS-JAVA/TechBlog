@@ -16,8 +16,8 @@ const SinglePost = () => {
           `http://localhost:8080/articles/${article._id}`
         );
 
-        setPost(result.data[0]);
-        setComments(result.data[0].comments);
+        setPost(result.data);
+        setComments(result.data.comments);
       } catch (error) {
         console.log(error);
       }
