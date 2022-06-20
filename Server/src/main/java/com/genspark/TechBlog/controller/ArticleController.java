@@ -38,7 +38,7 @@ public class ArticleController {
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/articles/search/{keyword}")
     public Iterable<Article> readByKeyword(@PathVariable String keyword) {
-        return articleService.findByContentOrTitleContains(keyword, keyword);
+        return articleService.findByContentContainsOrTitleContains(keyword, keyword);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
