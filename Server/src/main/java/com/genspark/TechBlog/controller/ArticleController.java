@@ -43,20 +43,17 @@ public class ArticleController {
         return articleService.findByContentOrTitleContains(keyword, keyword);
     }
 
-
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/users/{username}/articles")
     public Iterable<Article> readByUsername(@PathVariable String username) {
         return articleService.findAllByUsername(username);
     }
 
-
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/articles")
     public Article add(@RequestBody Article article) {
         return articleService.save(article);
     }
-
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/articles")
