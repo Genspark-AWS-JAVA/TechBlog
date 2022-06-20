@@ -12,11 +12,14 @@ const Navbar = () => {
                     <Nav.Link href="/search" className="headerArea">Search</Nav.Link>
                 </Nav.Item>
                 <Nav.Item className="headerArea">
-                    <Nav.Link href="/login" className="headerArea">Login</Nav.Link>
+                    <Nav.Link href="/new" className="headerArea">Create New Post</Nav.Link>
                 </Nav.Item>
                 <Nav.Item className="headerArea">
-                    <Nav.Link className="headerArea">Account</Nav.Link>
+                    <Nav.Link href="/login" className="headerArea">Login</Nav.Link>
                 </Nav.Item>
+                {/* <Nav.Item className="headerArea">
+                    <Nav.Link className="headerArea">Account</Nav.Link>
+                </Nav.Item> */}
             </Nav>
         </div>
     )
