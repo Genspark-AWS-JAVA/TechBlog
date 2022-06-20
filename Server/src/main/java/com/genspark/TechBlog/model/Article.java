@@ -32,7 +32,7 @@ public class Article {
     @JoinTable(name = "article_tag",
             joinColumns = @JoinColumn(name = "article_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id"))
-    private List<Tag> tag = new ArrayList<>();
+    private List<Tag> tags = new ArrayList<>();
 
 
     private String image;
@@ -50,12 +50,12 @@ public class Article {
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    public List<Tag> getTag() {
-        return tag;
+    public List<Tag> getTags() {
+        return tags;
     }
 
-    public void setTag(List<Tag> tag) {
-        this.tag = tag;
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 
     public List<Comment> getComments() {
@@ -162,4 +162,5 @@ public class Article {
     public void setUser(User user) {
         this.user = user;
     }
+
 }
