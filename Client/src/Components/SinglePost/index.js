@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { Row, Col, Button, Form } from "react-bootstrap";
+import { Row, Col, Button, Form, Container } from "react-bootstrap";
 
 const SinglePost = () => {
   const article = useParams();
@@ -63,7 +63,7 @@ const SinglePost = () => {
   };
 
   return (
-    <div>
+    <Container>
       <Row>
         <Col>
           <h1 className="titles">{post.title}</h1>
@@ -101,7 +101,7 @@ const SinglePost = () => {
           Delete post
         </Button>
       </div>
-    </div>
+    </Container>
   );
 };
 
