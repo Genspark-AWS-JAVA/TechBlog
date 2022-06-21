@@ -61,6 +61,7 @@ def insert_comments(data, article_ids):
                                  data=json.dumps(comment_data),
                                  headers=headers)
         i += 1
+        i %= len(article_ids)
         print(response.text)
         print(response.status_code)
         print("\n")
@@ -81,6 +82,7 @@ def insert_tags(data, article_ids):
                                 data=json.dumps(tag_data),
                                 headers=headers)
         i += 1
+        i %= len(article_ids)
         print(response.text)
         print(response.status_code)
         print("\n")
