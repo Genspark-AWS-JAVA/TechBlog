@@ -47,3 +47,7 @@
     background-color: transparent;
     color: black;
 }
+
+.card-text {
+    color: white;
+}
