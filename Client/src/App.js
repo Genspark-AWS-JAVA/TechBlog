@@ -6,6 +6,7 @@ import Posts from "./Components/Posts";
 import SinglePost from "./Components/SinglePost";
 import CreatePost from "./Components/CreatePost";
 import SearchResult from "./Components/SearchResult";
+import Footer from './Components/Footer';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route exact path={"/new"} component={CreatePost} />
           <Route exact path={"/search"} component={SearchResult} />
         </Switch>
+        <Footer />
       </div>
     </Router>
   );

@@ -18,7 +18,7 @@ const Posts = () => {
       <div>
         {
           posts.map(data =>
-            <div className="comments">
+            <div className="comments" key={data.id}>
               <h1><Link className="titles" to={`/articles/${data.id}`}>{data.title}</Link></h1>
               {data.content.length < 1000 &&
                 <p>{data.content}</p>
