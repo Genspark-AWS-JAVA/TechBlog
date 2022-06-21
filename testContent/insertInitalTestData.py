@@ -1,17 +1,18 @@
 import requests
+
 import json
 
 usersUrl = "http://localhost:8080/users/"
 articlesUrl = "http://localhost:8080/articles/"
+tagsUrl = "http://localhost:8080/tags/"
 
 headers = {
     'Content-Type': 'application/json',
     'Cookie': 'JSESSIONID=7415D4A21310EE9837149D851CB6E1BD'
 }
 
-# get users and articles from content.json and insert them into the database
-with open('testContent/content.json') as json_file:
-    data = json.load(json_file)
+
+def insertUsers(data):
     users_data = data.get('users')
     for users in users_data:
         user_data = {
@@ -26,10 +27,11 @@ with open('testContent/content.json') as json_file:
         print(response.text)
         print(response.status_code)
         print("\n")
+
+
+def insert_articles(data):
     articles_data = data.get('articles')
-
     article_ids = []
-
     for article in articles_data:
         article_data = {
             "title": article.get('title'),
@@ -43,6 +45,10 @@ with open('testContent/content.json') as json_file:
         print(response.text)
         print(response.status_code)
         print("\n")
+    return article_ids
+
+
+def insert_comments(data, article_ids):
     comments_data = data.get('comments')
     i = 0
     for comment in comments_data:
@@ -50,10 +56,40 @@ with open('testContent/content.json') as json_file:
             "content": comment.get('content'),
             "title": comment.get('title'),
         }
-        response = requests.post(articlesUrl + str(article_ids[i]) + "/comments",
-                                    data=json.dumps(comment_data),
-                                    headers=headers)
+        response = requests.post(articlesUrl + str(article_ids[i]) +
+                                 "/comments",
+                                 data=json.dumps(comment_data),
+                                 headers=headers)
         i += 1
         print(response.text)
         print(response.status_code)
         print("\n")
+
+
+def insert_tags(data, article_ids):
+    tags_data = data.get('tags')
+    i = 0
+    for tag in tags_data:
+        tag_data = {
+            "value": tag.get('value'),
+        }
+        response = requests.post(tagsUrl,
+                                 data=json.dumps(tag_data),
+                                 headers=headers)
+        response = requests.put(tagsUrl + tag.get('value') + "/articles/" +
+                                str(article_ids[i]),
+                                data=json.dumps(tag_data),
+                                headers=headers)
+        i += 1
+        print(response.text)
+        print(response.status_code)
+        print("\n")
+
+
+# get data from content.json and insert it into the database
+with open('testContent/content.json') as json_file:
+    data = json.load(json_file)
+    insertUsers(data)
+    articles_ids = insert_articles(data)
+    insert_comments(data, articles_ids)
+    insert_tags(data, articles_ids)
