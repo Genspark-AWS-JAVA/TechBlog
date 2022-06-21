@@ -1,8 +1,9 @@
-*{
+* {
     margin: auto;
     background-color: var(--accent);
 }
-:root{
+
+:root {
     --primary: #5D5C61;
     --secondary: #938e93;
     --tertiary: #b1a296;
@@ -12,19 +13,27 @@
 
 }
 
-.titles{
+.titles {
     text-decoration: none;
     color: white;
 }
 
 
-.headerArea{
+.headerArea {
     background-color: var(--primary);
     color: var(--accent);
 }
 
-.comments{
+.comments {
     padding-top: 5px;
     color: white;
     text-decoration: none;
+}
+
+
+.footer {
+    position: fixed;
+    height: 30px;
+    bottom: 0;
+    width: 100%;
 }

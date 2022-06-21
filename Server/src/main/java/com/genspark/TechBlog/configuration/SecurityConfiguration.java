@@ -3,6 +3,7 @@ package com.genspark.TechBlog.configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -39,26 +40,26 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .cors().disable();
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user")
-                .password("$2a$10$iFB7/HA/21gkwD1Ug7ooOuwSkcUxvhv/YdPHldxMlCnwncKsWYpo.")
-                .authorities(Authorities.WRITE_ARTICLE.toString())
-                .and()
-                .withUser("admin")
-                .password("$2a$10$iFB7/HA/21gkwD1Ug7ooOuwSkcUxvhv/YdPHldxMlCnwncKsWYpo.")
-                .authorities(Authorities.WRITE_ARTICLE.toString(), Authorities.DELETE_COMMENT.toString(),
-                        Authorities.DELETE_ARTICLE.toString(), Authorities.WRITE_USER.toString(),
-                        Authorities.DELETE_USER.toString()).and()
-                .withUser("admin@genspark.com")
-                .password("$2a$10$iFB7/HA/21gkwD1Ug7ooOuwSkcUxvhv/YdPHldxMlCnwncKsWYpo.")
-                .authorities(Authorities.WRITE_ARTICLE.toString(), Authorities.DELETE_COMMENT.toString(),
-                        Authorities.DELETE_ARTICLE.toString(), Authorities.WRITE_USER.toString(),
-                        Authorities.DELETE_USER.toString());
-    }
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                .withUser("user")
+//                .password("$2a$10$iFB7/HA/21gkwD1Ug7ooOuwSkcUxvhv/YdPHldxMlCnwncKsWYpo.")
+//                .authorities(Authorities.WRITE_ARTICLE.toString())
+//                .and()
+//                .withUser("admin")
+//                .password("$2a$10$iFB7/HA/21gkwD1Ug7ooOuwSkcUxvhv/YdPHldxMlCnwncKsWYpo.")
+//                .authorities(Authorities.WRITE_ARTICLE.toString(), Authorities.DELETE_COMMENT.toString(),
+//                        Authorities.DELETE_ARTICLE.toString(), Authorities.WRITE_USER.toString(),
+//                        Authorities.DELETE_USER.toString()).and()
+//                .withUser("admin@genspark.com")
+//                .password("$2a$10$iFB7/HA/21gkwD1Ug7ooOuwSkcUxvhv/YdPHldxMlCnwncKsWYpo.")
+//                .authorities(Authorities.WRITE_ARTICLE.toString(), Authorities.DELETE_COMMENT.toString(),
+//                        Authorities.DELETE_ARTICLE.toString(), Authorities.WRITE_USER.toString(),
+//                        Authorities.DELETE_USER.toString());
+//    }
 
-    //    @Override
+//        @Override
 //    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
 ////        auth.jdbcAuthentication()
 ////                .dataSource(dataSource)
@@ -70,8 +71,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .contextSource()
 //                .url("ldap://localhost:8389/dc=springframework,dc=org")
 //                .and()
-//                .passwordCompare()
-////                .passwordEncoder(new CustomPasswordEncoder());
+//                .passwordCompare();
+//    }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
