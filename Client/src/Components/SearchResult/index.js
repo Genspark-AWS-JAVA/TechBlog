@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Row, Col, Button, Form, Container, Card } from "react-bootstrap";
+import { Row, Col, Button, Form, Container, Card, InputGroup } from "react-bootstrap";
 import axios from 'axios';
 
 function SearchResult() {
@@ -16,11 +16,10 @@ function SearchResult() {
     <Container>
       <Form onSubmit={handleSearchSubmit}>
         <Row>
-          <Form.Group as={Col} controlId="search" >
-            {/* <Form.Control placeholder="Tags, Keywords, etc" /> */}
-            <input type="search" placeholder='Search' id='searchInput' />
+          <InputGroup as={Col} controlId="search" >
+            <Form.Control type="search" placeholder='Search' id='searchInput' aria-label='search' />
             <Button type="submit">Search</Button>
-          </Form.Group>
+          </InputGroup>
         </Row>
       </Form>
 
