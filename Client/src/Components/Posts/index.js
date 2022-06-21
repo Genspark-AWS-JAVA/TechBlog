@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Row, Col, Button } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { Link } from 'react-router-dom'
 import axios from "axios";
 
@@ -12,25 +12,9 @@ const Posts = () => {
   }, []);
 
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const result = await axios.get(
-  //         `http://localhost:8080/articles/${article._id}`
-  //       );
-
-  //       setPost(result.data);
-  //       setComments(result.data.comments);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
-
 
   return (
-    <div>
+    <Container>
       <div>
         {
           posts.map(data =>
@@ -49,7 +33,7 @@ const Posts = () => {
           )
         }
       </div>
-    </div>
+    </Container>
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
 
 const Login = () => {
   const handleSubmit = (e) => {
@@ -12,7 +12,7 @@ const Login = () => {
   }
 
   return (
-    <div>
+    <Container>
       <h1>Login</h1>
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -53,7 +53,7 @@ const Login = () => {
           Submit
         </Button>
       </Form>
-    </div>
+    </Container>
   );
 };
 

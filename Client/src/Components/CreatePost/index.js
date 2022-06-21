@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 
@@ -25,37 +25,37 @@ const CreatePost = () => {
         content: content,
 
       }
-      , {
-      auth: {
-        username: localStorage.getItem("username"),
-          password: localStorage.getItem("password")
-      }
-    })
+        , {
+          auth: {
+            username: localStorage.getItem("username"),
+            password: localStorage.getItem("password")
+          }
+        })
         .then(window.location.reload());
     }
   };
 
-return (
-  <div>
-    <Form>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Title</Form.Label>
-        <Form.Control
-          onChange={onTitleChange}
-          type="text"
-          placeholder="Your Title Here"
-        />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Content</Form.Label>
-        <Form.Control onChange={onContentChange} as="textarea" rows={3} />
-      </Form.Group>
-      <Button type="submit" onClick={handleFormSubmit}>
-        Submit
-      </Button>
-    </Form>
-  </div>
-);
+  return (
+    <Container>
+      <Form>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+          <Form.Label>Title</Form.Label>
+          <Form.Control
+            onChange={onTitleChange}
+            type="text"
+            placeholder="Your Title Here"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Content</Form.Label>
+          <Form.Control onChange={onContentChange} as="textarea" rows={3} />
+        </Form.Group>
+        <Button type="submit" onClick={handleFormSubmit}>
+          Submit
+        </Button>
+      </Form>
+    </Container>
+  );
 };
 
 export default CreatePost;
