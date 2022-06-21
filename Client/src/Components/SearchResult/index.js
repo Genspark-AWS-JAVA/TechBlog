@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Row, Col, Button, Form, Container } from "react-bootstrap";
+import { Row, Col, Button, Form, Container, Card } from "react-bootstrap";
 import axios from 'axios';
 
 function SearchResult() {
@@ -26,10 +26,14 @@ function SearchResult() {
 
       <div>
         {searchResult.map(data =>
-          <div className="results" key={data.id}>
-            <h1>{data.title}</h1>
-            <p>{data.content}</p>
-          </div>
+          <Card className="results" key={data.id}>
+            <Card.Body>
+              <a href={`articles/${data.id}`} className="stretched-link">
+                <Card.Title>{data.title}</Card.Title>
+              </a>
+              <Card.Text>{data.content}</Card.Text>
+            </Card.Body>
+          </Card>
         )}
       </div>
     </Container>
