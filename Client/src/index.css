@@ -37,3 +37,13 @@
     bottom: 0;
     width: 100%;
 }
+
+.toast strong {
+    background-color: transparent;
+    color: black;
+}
+
+.toast-body {
+    background-color: transparent;
+    color: black;
+}
