@@ -296,5 +296,40 @@
         {
             "value": "AWS SQS"
         }
+    ],
+    "favorite": [
+        {
+            "username": "erwin"
+        },
+        {
+            "username": "kweissnat"
+        },
+        {
+            "username": "dennis"
+        },
+        {
+            "username": "lgraham"
+        },
+        {
+            "username": "erwin"
+        },
+        {
+            "username": "clbauch"
+        },
+        {
+            "username": "lebsack"
+        },
+        {
+            "username": "cdietrich"
+        },
+        {
+            "username": "dennis"
+        },
+        {
+            "username": "kweissnat"
+        },
+        {
+            "username": "nrunolfsdottir"
+        }
     ]
 }
