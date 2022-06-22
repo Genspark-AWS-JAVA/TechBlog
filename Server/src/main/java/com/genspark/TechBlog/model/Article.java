@@ -2,6 +2,7 @@ package com.genspark.TechBlog.model;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -33,19 +34,15 @@ public class Article {
             joinColumns = @JoinColumn(name = "article_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private List<Tag> tags = new ArrayList<>();
-
-
+    @URL
     private String image;
     private String status;
     private String likes;
     private String views;
     private String slug;
     private String username;
-
-
     @OneToMany(mappedBy = "article")
     private List<Comment> comments = new ArrayList<>();
-
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     private User user;

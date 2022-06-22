@@ -1,6 +1,8 @@
 package com.genspark.TechBlog.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,28 +12,20 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
     private Long id;
+    @NotEmpty(message = "Username cannot be empty")
     @Column(nullable = false, unique = true)
     private String username;
     private String password;
+    @Email(message = "Email must be valid")
     private String email;
     private String firstName;
     private String lastName;
     private String phone;
     private String role;
-
     @OneToMany(mappedBy = "user")
     private List<Comment> comments = new ArrayList<>();
-
     @OneToMany(mappedBy = "username")
     private List<Article> articles = new ArrayList<>();
-
-    public List<Article> getArticles() {
-        return articles;
-    }
-
-    public void setArticles(List<Article> articles) {
-        this.articles = articles;
-    }
 
     public Long getId() {
         return id;
@@ -105,5 +99,11 @@ public class User {
         this.comments = comments;
     }
 
+    public List<Article> getArticles() {
+        return articles;
+    }
 
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
+    }
 }
