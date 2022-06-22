@@ -121,6 +121,11 @@
             "title": "Java",
             "content": "Java is a high-level, statically typed, object-oriented programming language. Java is designed to be highly readable. It uses English-like syntax and has many built-in functions that are easy to use. Java is also a dynamic language, which means that it is capable of executing code at run-time. Java is also a high-level language, which means that it can be used to create high-level applications.",
             "username": "kweissnat"
+        },
+        {
+            "title": "Amazon SageMaker",
+            "content": "Amazon SageMaker is a cloud machine-learning platform that was launched in November 2017. SageMaker enables developers to create, train, and deploy machine-learning (ML) models in the cloud. SageMaker also enables developers to deploy ML models on embedded systems and edge-devices.",
+            "username": "dennis"
         }
     ],
     "comments": [
@@ -290,6 +295,41 @@
         },
         {
             "value": "AWS SQS"
+        }
+    ],
+    "favorite": [
+        {
+            "username": "erwin"
+        },
+        {
+            "username": "kweissnat"
+        },
+        {
+            "username": "dennis"
+        },
+        {
+            "username": "lgraham"
+        },
+        {
+            "username": "erwin"
+        },
+        {
+            "username": "clbauch"
+        },
+        {
+            "username": "lebsack"
+        },
+        {
+            "username": "cdietrich"
+        },
+        {
+            "username": "dennis"
+        },
+        {
+            "username": "kweissnat"
+        },
+        {
+            "username": "nrunolfsdottir"
         }
     ]
 }

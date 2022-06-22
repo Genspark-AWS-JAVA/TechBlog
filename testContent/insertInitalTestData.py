@@ -88,6 +88,20 @@ def insert_tags(data, article_ids):
         print("\n")
 
 
+def insert_favorite_articles(data, article_ids):
+    favorite_users_data = data.get('favorite')
+    i = 0
+    for favorite_user in favorite_users_data:
+        response = requests.put(usersUrl + favorite_user.get('username') +
+                                "/favorite/" + str(article_ids[i]),
+                                headers=headers)
+        i += 1
+        i %= len(article_ids)
+        print(response.text)
+        print(response.status_code)
+        print("\n")
+
+
 # get data from content.json and insert it into the database
 with open('testContent/content.json') as json_file:
     data = json.load(json_file)
@@ -95,3 +109,4 @@ with open('testContent/content.json') as json_file:
     articles_ids = insert_articles(data)
     insert_comments(data, articles_ids)
     insert_tags(data, articles_ids)
+    insert_favorite_articles(data, articles_ids)

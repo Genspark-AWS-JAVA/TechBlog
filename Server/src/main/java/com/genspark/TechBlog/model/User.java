@@ -4,7 +4,9 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity(name = "users")
 public class User {
@@ -22,10 +24,27 @@ public class User {
     private String lastName;
     private String phone;
     private String role;
+
+
     @OneToMany(mappedBy = "user")
     private List<Comment> comments = new ArrayList<>();
     @OneToMany(mappedBy = "username")
     private List<Article> articles = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(name = "users_articles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "articles_id"))
+    private Set<Article> favoriteArticle = new LinkedHashSet<>();
+
+    public Set<Article> getFavoriteArticle() {
+        return favoriteArticle;
+    }
+
+    public void setFavoriteArticle(Set<Article> favoriteArticle) {
+        this.favoriteArticle = favoriteArticle;
+    }
+
 
     public Long getId() {
         return id;
@@ -106,4 +125,5 @@ public class User {
     public void setArticles(List<Article> articles) {
         this.articles = articles;
     }
+
 }
