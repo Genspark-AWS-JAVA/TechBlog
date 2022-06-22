@@ -14,5 +14,5 @@ public interface UserService extends JpaRepository<User, Long> {
     @Transactional
     void deleteByUsername(String username);
 
-    User findByUsername(String username);
+    User findFirstByUsername(String username);
 }

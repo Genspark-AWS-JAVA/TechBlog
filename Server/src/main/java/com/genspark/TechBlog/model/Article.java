@@ -1,13 +1,12 @@
 package com.genspark.TechBlog.model;
 
+import org.hibernate.Hibernate;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity(name = "articles")
 public class Article {
@@ -46,6 +45,21 @@ public class Article {
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     private User user;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "users_articles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "articles_id"))
+    private Set<User> favoriteUsers = new LinkedHashSet<>();
+
+    public Set<User> getFavoriteUsers() {
+        return favoriteUsers;
+    }
+
+    public void setFavoriteUsers(Set<User> favoriteUsers) {
+        this.favoriteUsers = favoriteUsers;
+    }
+
 
     public List<Tag> getTags() {
         return tags;
@@ -160,4 +174,17 @@ public class Article {
         this.user = user;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Article article = (Article) o;
+        return Objects.equals(id, article.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }
