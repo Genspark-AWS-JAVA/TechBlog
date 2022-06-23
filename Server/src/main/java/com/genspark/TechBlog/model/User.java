@@ -1,5 +1,7 @@
 package com.genspark.TechBlog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -17,6 +19,7 @@ public class User {
     @NotEmpty(message = "Username cannot be empty")
     @Column(nullable = false, unique = true)
     private String username;
+    @JsonIgnore
     private String password;
     @Email(message = "Email must be valid")
     private String email;
