@@ -20,6 +20,8 @@ const App = () => {
           <Route exact path={"/new"} component={CreatePost} />
           <Route exact path={"/search"} component={SearchResult} />
         </Switch>
+        <br />
+        <br />
         <Footer />
       </div>
     </Router>
